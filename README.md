@@ -45,3 +45,6 @@ Instalação via docker
 
 ### Tentar realizar transação com valor zero ou negativo
 ![image](https://github.com/renatohkuramoto/teste_objective/assets/62068687/5e8af5f3-28cf-451a-89e0-b7050cc15d53)
+
+### Tentar transacionar com tipo de pagamento inválido
+![image](https://github.com/renatohkuramoto/teste_objective/assets/62068687/7f6f36a2-4094-4b2d-9212-6a39b0021031)
