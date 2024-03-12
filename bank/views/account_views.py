@@ -31,6 +31,6 @@ class AccountView(APIView):
                 return Response(status=status.HTTP_201_CREATED, data=data)
             return Response(
                 status=status.HTTP_422_UNPROCESSABLE_ENTITY,
-                data={"message": "Account Already Registered!"},
+                data={"message": "Conta já cadastrada."},
             )
         return Response(status=status.HTTP_400_BAD_REQUEST, data=serializer.errors)

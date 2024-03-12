@@ -33,12 +33,18 @@ class TransactionView(APIView):
             value = data["valor"]
             fee = TransactionFee[payment_type].value
 
+            if value <= 0:
+                return Response(
+                    status=status.HTTP_400_BAD_REQUEST,
+                    data={"message": "Valor não pode ser negativo ou igual a zero."},
+                )
+
             account = AccountRepository.get_by_number(account_number)
 
             if not account:
                 return Response(
                     status=status.HTTP_400_BAD_REQUEST,
-                    data={"message": "Conta não encontrada"},
+                    data={"message": "Conta não encontrada."},
                 )
 
             transaction_fee = (value / 100) * fee
@@ -47,7 +53,7 @@ class TransactionView(APIView):
             if account.valor == 0 or account.valor < transaction_value:
                 return Response(
                     status=status.HTTP_400_BAD_REQUEST,
-                    data={"message": "Saldo insulficiente para a operação"},
+                    data={"message": "Saldo insulficiente para a operação."},
                 )
 
             # Bloqueia o valor antes da transação
